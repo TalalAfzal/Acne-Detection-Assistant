@@ -1,0 +1,311 @@
+{
+  "treatments": [
+    {
+      "id": 1,
+      "name": "Benzoyl Peroxide",
+      "type": "topical",
+      "severity": ["mild", "moderate"],
+      "description": "Benzoyl peroxide is an antimicrobial agent that kills acne-causing bacteria and helps unclog pores.",
+      "usage": "Apply a thin layer to affected areas once or twice daily. Start with lower concentrations (2.5%) to minimize irritation.",
+      "benefits": [
+        "Kills P. acnes bacteria",
+        "Reduces inflammation",
+        "Unclogs pores",
+        "Available over-the-counter"
+      ],
+      "side_effects": ["Dryness", "Peeling", "Redness", "Bleaching of fabrics"],
+      "precautions": "Start with lower concentrations and gradually increase. Use sunscreen as it can increase photosensitivity.",
+      "keywords": [
+        "antibacterial",
+        "OTC",
+        "topical",
+        "mild acne",
+        "moderate acne"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Salicylic Acid",
+      "type": "topical",
+      "severity": ["mild", "moderate"],
+      "description": "A beta-hydroxy acid that exfoliates the skin and helps unclog pores by removing dead skin cells.",
+      "usage": "Apply to affected areas 1-2 times daily. Available in concentrations from 0.5% to 2%.",
+      "benefits": [
+        "Exfoliates dead skin cells",
+        "Unclogs pores",
+        "Reduces blackheads",
+        "Anti-inflammatory properties"
+      ],
+      "side_effects": ["Mild irritation", "Dryness", "Peeling"],
+      "precautions": "Avoid contact with eyes. May increase sun sensitivity.",
+      "keywords": ["BHA", "exfoliant", "blackheads", "pore cleanser", "OTC"]
+    },
+    {
+      "id": 3,
+      "name": "Retinoids (Tretinoin)",
+      "type": "topical",
+      "severity": ["moderate", "severe"],
+      "description": "Vitamin A derivatives that promote cell turnover and prevent clogged pores. Prescription strength retinoids are highly effective.",
+      "usage": "Apply a pea-sized amount to entire face every other night initially, then nightly as tolerated.",
+      "benefits": [
+        "Prevents clogged pores",
+        "Reduces acne lesions",
+        "Improves skin texture",
+        "Anti-aging benefits"
+      ],
+      "side_effects": [
+        "Initial purging",
+        "Dryness",
+        "Peeling",
+        "Increased photosensitivity"
+      ],
+      "precautions": "Use sunscreen daily. Start slowly to build tolerance. Avoid during pregnancy.",
+      "keywords": [
+        "vitamin A",
+        "prescription",
+        "cell turnover",
+        "anti-aging",
+        "photosensitive"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Antibiotics (Oral)",
+      "type": "oral",
+      "severity": ["moderate", "severe"],
+      "description": "Oral antibiotics like doxycycline, minocycline, or erythromycin help reduce acne-causing bacteria and inflammation.",
+      "usage": "Take as prescribed by dermatologist, typically for 3-6 months. Always complete the full course.",
+      "benefits": [
+        "Reduces bacterial count",
+        "Decreases inflammation",
+        "Effective for widespread acne"
+      ],
+      "side_effects": [
+        "GI upset",
+        "Photosensitivity",
+        "Yeast infections",
+        "Antibiotic resistance risk"
+      ],
+      "precautions": "Take with food to reduce GI upset. Use sunscreen. Avoid long-term use.",
+      "keywords": [
+        "systemic",
+        "bacteria",
+        "inflammation",
+        "prescription",
+        "short-term"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Isotretinoin (Accutane)",
+      "type": "oral",
+      "severity": ["severe", "cystic"],
+      "description": "A powerful oral retinoid reserved for severe, cystic acne that hasn't responded to other treatments.",
+      "usage": "Prescribed by dermatologist with strict monitoring. Treatment typically lasts 4-6 months.",
+      "benefits": [
+        "Highly effective for severe acne",
+        "Long-lasting results",
+        "Reduces oil production",
+        "Prevents scarring"
+      ],
+      "side_effects": [
+        "Severe dryness",
+        "Joint pain",
+        "Mood changes",
+        "Birth defects if pregnant"
+      ],
+      "precautions": "Requires pregnancy prevention program. Regular blood monitoring needed. Avoid vitamin A supplements.",
+      "keywords": [
+        "severe acne",
+        "cystic",
+        "powerful",
+        "monitoring required",
+        "teratogenic"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Hormonal Therapy",
+      "type": "oral",
+      "severity": ["moderate", "severe"],
+      "description": "Birth control pills or anti-androgen medications can help women with hormonal acne.",
+      "usage": "Prescribed by healthcare provider. Effects may take 3-6 months to see improvement.",
+      "benefits": [
+        "Regulates hormones",
+        "Reduces oil production",
+        "Effective for jawline acne",
+        "Additional contraceptive benefit"
+      ],
+      "side_effects": [
+        "Nausea",
+        "Weight changes",
+        "Mood changes",
+        "Blood clot risk"
+      ],
+      "precautions": "Not suitable for all women. Discuss medical history with provider.",
+      "keywords": [
+        "hormonal",
+        "women",
+        "birth control",
+        "anti-androgen",
+        "jawline acne"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Chemical Peels",
+      "type": "professional",
+      "severity": ["mild", "moderate"],
+      "description": "Professional treatments using acids to exfoliate skin and improve acne and acne scarring.",
+      "usage": "Performed by dermatologist or licensed aesthetician. Series of treatments typically needed.",
+      "benefits": [
+        "Improves skin texture",
+        "Reduces acne scars",
+        "Unclogs pores",
+        "Evens skin tone"
+      ],
+      "side_effects": ["Temporary redness", "Peeling", "Increased sensitivity"],
+      "precautions": "Avoid sun exposure after treatment. Follow post-care instructions carefully.",
+      "keywords": [
+        "professional",
+        "exfoliation",
+        "scarring",
+        "texture",
+        "series"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Light Therapy",
+      "type": "professional",
+      "severity": ["mild", "moderate"],
+      "description": "Blue light therapy targets acne-causing bacteria, while red light reduces inflammation.",
+      "usage": "Professional treatments 2-3 times per week for several weeks.",
+      "benefits": [
+        "Kills acne bacteria",
+        "Reduces inflammation",
+        "No systemic side effects",
+        "Good for sensitive skin"
+      ],
+      "side_effects": ["Temporary redness", "Eye sensitivity during treatment"],
+      "precautions": "Protect eyes during treatment. May not be suitable for all skin types.",
+      "keywords": [
+        "blue light",
+        "red light",
+        "bacteria",
+        "inflammation",
+        "non-invasive"
+      ]
+    }
+  ],
+  "skincare_routine": {
+    "morning": [
+      {
+        "step": 1,
+        "product": "Gentle Cleanser",
+        "description": "Use a mild, non-comedogenic cleanser to remove overnight buildup without over-drying.",
+        "tips": "Avoid harsh scrubbing. Use lukewarm water."
+      },
+      {
+        "step": 2,
+        "product": "Treatment (if prescribed)",
+        "description": "Apply any prescribed topical treatments like benzoyl peroxide or retinoids.",
+        "tips": "Follow dermatologist's instructions for application."
+      },
+      {
+        "step": 3,
+        "product": "Moisturizer",
+        "description": "Use a lightweight, non-comedogenic moisturizer to maintain skin barrier.",
+        "tips": "Even oily skin needs moisture. Look for oil-free formulas."
+      },
+      {
+        "step": 4,
+        "product": "Sunscreen (SPF 30+)",
+        "description": "Apply broad-spectrum sunscreen to prevent UV damage and post-inflammatory hyperpigmentation.",
+        "tips": "Reapply every 2 hours. Choose non-comedogenic formulas."
+      }
+    ],
+    "evening": [
+      {
+        "step": 1,
+        "product": "Gentle Cleanser",
+        "description": "Remove makeup, sunscreen, and daily buildup with a gentle cleanser.",
+        "tips": "Double cleanse if wearing heavy makeup or sunscreen."
+      },
+      {
+        "step": 2,
+        "product": "Treatment (if prescribed)",
+        "description": "Apply evening treatments like retinoids or other prescribed medications.",
+        "tips": "Start slowly with new treatments to build tolerance."
+      },
+      {
+        "step": 3,
+        "product": "Moisturizer",
+        "description": "Use a slightly richer moisturizer to repair and hydrate overnight.",
+        "tips": "Can use a heavier formula at night than during the day."
+      }
+    ]
+  },
+  "lifestyle_tips": [
+    {
+      "category": "Diet",
+      "tip": "Limit dairy and high-glycemic foods",
+      "description": "Some studies suggest dairy and high-sugar foods may worsen acne in some individuals.",
+      "evidence": "moderate"
+    },
+    {
+      "category": "Hygiene",
+      "tip": "Change pillowcases frequently",
+      "description": "Dirty pillowcases can harbor bacteria and oils that may contribute to acne.",
+      "evidence": "low"
+    },
+    {
+      "category": "Stress",
+      "tip": "Manage stress levels",
+      "description": "Chronic stress can worsen acne by increasing hormone production and inflammation.",
+      "evidence": "moderate"
+    },
+    {
+      "category": "Exercise",
+      "tip": "Shower after sweating",
+      "description": "Remove sweat and bacteria promptly after exercise to prevent clogged pores.",
+      "evidence": "high"
+    },
+    {
+      "category": "Habits",
+      "tip": "Avoid touching your face",
+      "description": "Hands carry bacteria and oils that can worsen acne when transferred to the face.",
+      "evidence": "high"
+    }
+  ],
+  "when_to_see_dermatologist": [
+    "Acne is severe or cystic",
+    "Over-the-counter treatments haven't worked after 6-8 weeks",
+    "Acne is causing scarring",
+    "Acne is affecting self-esteem or quality of life",
+    "You're experiencing side effects from treatments",
+    "Acne suddenly worsens or changes pattern"
+  ],
+  "myths_and_facts": [
+    {
+      "myth": "Acne is caused by poor hygiene",
+      "fact": "Acne is primarily caused by hormones, genetics, and bacteria. Over-washing can actually worsen acne."
+    },
+    {
+      "myth": "Sun exposure clears acne",
+      "fact": "While sun may temporarily dry out acne, it can worsen it long-term and cause premature aging."
+    },
+    {
+      "myth": "Popping pimples helps them heal faster",
+      "fact": "Popping pimples can push bacteria deeper, cause scarring, and spread infection."
+    },
+    {
+      "myth": "Only teenagers get acne",
+      "fact": "Adult acne is common, especially in women due to hormonal fluctuations."
+    },
+    {
+      "myth": "Makeup causes acne",
+      "fact": "Non-comedogenic makeup doesn't cause acne. The key is proper removal and choosing the right products."
+    }
+  ]
+}

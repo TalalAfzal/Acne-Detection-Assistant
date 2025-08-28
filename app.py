@@ -56,7 +56,7 @@ st.markdown("""
 def initialize_session_state():
     """Initialize session state variables"""
     if 'acne_detector' not in st.session_state:
-        st.session_state.acne_detector = AcneDetector()
+        st.session_state.acne_detector = AcneDetector(model_path='best.pt')
     if 'chatbot' not in st.session_state:
         st.session_state.chatbot = AcneChatbot()
     if 'knowledge_base' not in st.session_state:
@@ -205,8 +205,7 @@ def display_detection_stats(detections):
         
         # Suggest chatbot consultation
         if st.button("💬 Get Treatment Advice"):
-            st.session_state.page = "Treatment Chatbot"
-            st.experimental_rerun()
+            st.info("💡 Navigate to the 'Treatment Chatbot' page in the sidebar to get personalized treatment advice based on your detection results!")
     else:
         st.info("No acne detected in the image.")
 
@@ -270,7 +269,7 @@ def process_chat_message(user_input):
             st.session_state.chat_history.append((user_input, response))
             
             # Rerun to update chat display
-            st.experimental_rerun()
+            st.rerun()
             
     except Exception as e:
         st.error(f"Error generating response: {str(e)}")

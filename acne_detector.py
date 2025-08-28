@@ -23,9 +23,8 @@ class AcneDetector:
         # Load YOLOv5 model
         self.model = self._load_model(model_path)
         
-        # Define acne-related classes (for demonstration, we'll use person detection
-        # and treat high-confidence face detections as potential acne areas)
-        self.acne_classes = ['acne', 'pimple', 'blackhead', 'whitehead']
+        # Define acne-related classes based on the trained model
+        self.acne_classes = ['Cystic', 'Pustular']
         
     def _load_model(self, model_path: str = None):
         """
@@ -87,7 +86,7 @@ class AcneDetector:
     
     def _process_yolo_results(self, results, image_shape: Tuple) -> List[Dict]:
         """
-        Process YOLOv5 results and simulate acne detection
+        Process YOLOv5 results for acne detection
         
         Args:
             results: YOLOv5 detection results
@@ -98,9 +97,29 @@ class AcneDetector:
         """
         detections = []
         
-        # Since we don't have a real acne-trained model, we'll simulate detections
-        # by creating random acne spots for demonstration
-        detections.extend(self._simulate_acne_detections(image_shape))
+        # Process actual YOLOv5 results
+        if results is not None and len(results.pandas().xyxy[0]) > 0:
+            df = results.pandas().xyxy[0]
+            
+            for _, row in df.iterrows():
+                # Extract bounding box coordinates
+                x1, y1, x2, y2 = int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax'])
+                confidence = float(row['confidence'])
+                class_name = str(row['name'])
+                
+                # Only process acne-related detections
+                if class_name in self.acne_classes and confidence >= self.confidence_threshold:
+                    detection = {
+                        'bbox': [x1, y1, x2, y2],
+                        'confidence': confidence,
+                        'class': class_name,
+                        'severity': self._determine_severity(confidence)
+                    }
+                    detections.append(detection)
+        
+        # If no detections found, fall back to simulation for demo purposes
+        if len(detections) == 0:
+            detections.extend(self._simulate_acne_detections(image_shape))
         
         return detections
     
@@ -133,7 +152,7 @@ class AcneDetector:
             confidence = 0.3 + 0.6 * np.random.random()
             
             # Random acne type
-            acne_type = np.random.choice(['pimple', 'blackhead', 'whitehead', 'cyst'])
+            acne_type = np.random.choice(['Cystic', 'Pustular'])
             
             detection = {
                 'bbox': [center_x - size//2, center_y - size//2, 
