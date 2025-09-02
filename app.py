@@ -1,3 +1,8 @@
+# Fix for PyTorch-Streamlit compatibility issue
+import os
+os.environ["STREAMLIT_SERVER_ENABLE_FILE_WATCHER"] = "false"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 import streamlit as st
 import cv2
 import numpy as np
@@ -8,7 +13,6 @@ import pandas as pd
 from transformers import pipeline, GPT2LMHeadModel, GPT2Tokenizer
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-import os
 
 # Import custom modules
 from acne_detector import AcneDetector
