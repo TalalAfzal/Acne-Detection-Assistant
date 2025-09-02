@@ -36,22 +36,14 @@ class AcneDetector:
         Returns:
             Loaded YOLOv5 model
         """
-        try:
-            if model_path and os.path.exists(model_path):
-                # Load custom trained model
-                model = yolov5.load(model_path, device=self.device)
-            else:
-                # Load pre-trained YOLOv5 model (we'll simulate acne detection)
-                model = yolov5.load('yolov5s.pt', device=self.device)
-            
-            model.conf = self.confidence_threshold
-            model.iou = 0.45
-            return model
-            
-        except Exception as e:
-            print(f"Error loading model: {e}")
-            # Fallback to basic detection
-            return None
+        from pathlib import Path
+        import pathlib
+        temp = pathlib.PosixPath
+        pathlib.PosixPath = pathlib.WindowsPath
+        model = torch.hub.load("ultralytics/yolov5", "custom", path="best.pt", force_reload=True)
+        model.conf = self.confidence_threshold
+        model.iou = 0.45
+        return model
     
     def detect_acne(self, image: np.ndarray) -> Tuple[np.ndarray, List[Dict]]:
         """
@@ -67,13 +59,8 @@ class AcneDetector:
             # Convert BGR to RGB for YOLOv5
             rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             
-            if self.model is not None:
-                # Use YOLOv5 for detection (simulated acne detection)
-                results = self.model(rgb_image)
-                detections = self._process_yolo_results(results, image.shape)
-            else:
-                # Fallback: Use traditional computer vision methods
-                detections = self._fallback_detection(image)
+            results = self.model(rgb_image)
+            detections = self._process_yolo_results(results, image.shape)
             
             # Draw bounding boxes and annotations
             annotated_image = self._draw_detections(image.copy(), detections)
@@ -337,5 +324,5 @@ class AcneDetector:
             new_threshold: New confidence threshold (0.0 to 1.0)
         """
         self.confidence_threshold = max(0.0, min(1.0, new_threshold))
-        if self.model is not None:
-            self.model.conf = self.confidence_threshold
+        self.model.conf = self.confidence_threshold
+        
