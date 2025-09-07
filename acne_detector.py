@@ -9,7 +9,7 @@ import os
 class AcneDetector:
     """YOLOv5-based acne detection system"""
     
-    def __init__(self, model_path: str = None, confidence_threshold: float = 0.25):
+    def __init__(self, model_path: str = None, confidence_threshold: float = 0.1):
         """
         Initialize the acne detector
         
@@ -19,12 +19,14 @@ class AcneDetector:
         """
         self.confidence_threshold = confidence_threshold
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        print(f"Device set to use {self.device}")
         
         # Load YOLOv5 model
         self.model = self._load_model(model_path)
         
         # Define acne-related classes based on the trained model
         self.acne_classes = ['Cystic', 'Pustular']
+        print(f"Acne detector initialized with confidence threshold: {self.confidence_threshold}")
         
     def _load_model(self, model_path: str = None):
         """
@@ -84,30 +86,40 @@ class AcneDetector:
         """
         detections = []
         
-        # Process actual YOLOv5 results
-        if results is not None and len(results.pandas().xyxy[0]) > 0:
+        # Debug: Print results info
+        print(f"Processing YOLO results...")
+        if results is not None:
             df = results.pandas().xyxy[0]
+            print(f"Total detections from model: {len(df)}")
             
-            for _, row in df.iterrows():
-                # Extract bounding box coordinates
-                x1, y1, x2, y2 = int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax'])
-                confidence = float(row['confidence'])
-                class_name = str(row['name'])
+            if len(df) > 0:
+                print("All detections:")
+                for _, row in df.iterrows():
+                    print(f"  Class: {row['name']}, Confidence: {row['confidence']:.3f}")
                 
-                # Only process acne-related detections
-                if class_name in self.acne_classes and confidence >= self.confidence_threshold:
-                    detection = {
-                        'bbox': [x1, y1, x2, y2],
-                        'confidence': confidence,
-                        'class': class_name,
-                        'severity': self._determine_severity(confidence)
-                    }
-                    detections.append(detection)
+                # Process detections
+                for _, row in df.iterrows():
+                    # Extract bounding box coordinates
+                    x1, y1, x2, y2 = int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax'])
+                    confidence = float(row['confidence'])
+                    class_name = str(row['name'])
+                    
+                    # Process ALL detections above threshold (not just acne classes)
+                    if confidence >= self.confidence_threshold:
+                        detection = {
+                            'bbox': [x1, y1, x2, y2],
+                            'confidence': confidence,
+                            'class': class_name,
+                            'severity': self._determine_severity(confidence)
+                        }
+                        detections.append(detection)
+                        print(f"  Added detection: {class_name} with confidence {confidence:.3f}")
+            else:
+                print("No detections found by the model")
+        else:
+            print("Results is None")
         
-        # If no detections found, fall back to simulation for demo purposes
-        if len(detections) == 0:
-            detections.extend(self._simulate_acne_detections(image_shape))
-        
+        print(f"Final detections count: {len(detections)}")
         return detections
     
     def _simulate_acne_detections(self, image_shape: Tuple) -> List[Dict]:
